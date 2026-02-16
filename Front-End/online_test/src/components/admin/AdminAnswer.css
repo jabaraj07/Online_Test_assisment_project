@@ -1,0 +1,297 @@
+/* AdminAnswer.css */
+
+.answers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .answers-header {
+    margin-bottom: 2rem;
+  }
+  
+  .header-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  
+  .back-button:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    color: #2d3748;
+    transform: translateX(-2px);
+  }
+  
+  .back-button:active {
+    transform: translateX(0);
+  }
+  
+  .back-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .answers-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+  }
+  
+  .attempt-id-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #edf2f7;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    font-family: 'Courier New', monospace;
+    align-self: flex-start;
+  }
+  
+  .answers-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    flex: 1;
+    min-width: 180px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #718096;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .stat-total .stat-value {
+    color: #4299e1;
+  }
+  
+  .stat-answered .stat-value {
+    color: #38a169;
+  }
+  
+  .stat-not-attempted .stat-value {
+    color: #e53e3e;
+  }
+  
+  /* Answers content */
+  .answers-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Answer card */
+  .answer-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .answer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .answer-card.not-attempted {
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+  }
+  
+  .answer-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .answer-card.not-attempted .answer-card-header {
+    background: #ffe5e5;
+    border-bottom: 1px solid #fecaca;
+  }
+  
+  .question-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2d3748;
+  }
+  
+  .question-id {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #718096;
+    padding: 0.25rem 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .not-attempted-badge {
+    margin-left: auto;
+    padding: 0.375rem 0.75rem;
+    background: #fed7d7;
+    color: #742a2a;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  
+  .answer-content {
+    padding: 1.5rem;
+  }
+  
+  .answer-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2d3748;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+  }
+  
+  .no-answer-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a0aec0;
+    font-style: italic;
+    margin: 0;
+  }
+  
+  .no-answer-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .answer-footer {
+    padding: 1rem 1.5rem;
+    background: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .word-count {
+    font-size: 0.875rem;
+    color: #718096;
+    font-weight: 500;
+  }
+  
+  /* Empty state */
+  .empty-state-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .empty-icon {
+    width: 4rem;
+    height: 4rem;
+    color: #cbd5e0;
+    margin-bottom: 1rem;
+  }
+  
+  .empty-message {
+    font-size: 1.125rem;
+    color: #a0aec0;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .answers-container {
+      padding: 1rem;
+    }
+  
+    .answers-title {
+      font-size: 1.5rem;
+    }
+  
+    .answers-stats {
+      flex-direction: column;
+    }
+  
+    .stat-card {
+      min-width: 100%;
+    }
+  
+    .back-button {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .answer-card-header {
+      flex-wrap: wrap;
+      padding: 1rem;
+    }
+  
+    .question-id {
+      font-size: 0.8125rem;
+    }
+  
+    .not-attempted-badge {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .answer-content {
+      padding: 1rem;
+    }
+  
+    .answer-text {
+      font-size: 0.9375rem;
+    }
+  }

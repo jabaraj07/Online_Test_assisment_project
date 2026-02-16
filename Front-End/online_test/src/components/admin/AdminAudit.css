@@ -1,0 +1,300 @@
+/* AdminAudit.css */
+
+/* Add these styles to your existing AdminAudit.css */
+
+.header-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  
+  .back-button:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    color: #2d3748;
+    transform: translateX(-2px);
+  }
+  
+  .back-button:active {
+    transform: translateX(0);
+  }
+  
+  .back-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .attempt-id-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #edf2f7;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    font-family: 'Courier New', monospace;
+    align-self: flex-start;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .header-top {
+      gap: 0.75rem;
+    }
+  
+    .back-button {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .attempt-id-badge {
+      font-size: 0.8125rem;
+    }
+  }
+
+.audit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .audit-header {
+    margin-bottom: 2rem;
+  }
+  
+  .audit-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+  }
+  
+  .audit-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #718096;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-severity {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  
+  /* Severity colors */
+  .severity-clean .stat-value {
+    color: #38a169;
+  }
+  
+  .severity-clean .stat-severity {
+    background: #c6f6d5;
+    color: #22543d;
+  }
+  
+  .severity-low .stat-value {
+    color: #d69e2e;
+  }
+  
+  .severity-low .stat-severity {
+    background: #fefcbf;
+    color: #744210;
+  }
+  
+  .severity-medium .stat-value {
+    color: #dd6b20;
+  }
+  
+  .severity-medium .stat-severity {
+    background: #fed7d7;
+    color: #742a2a;
+  }
+  
+  .severity-high .stat-value {
+    color: #e53e3e;
+  }
+  
+  .severity-high .stat-severity {
+    background: #feb2b2;
+    color: #742a2a;
+  }
+  
+  .stat-secondary .stat-value {
+    color: #4299e1;
+  }
+  
+  /* Table styles */
+  .table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .audit-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .audit-table thead {
+    background: #f7fafc;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  
+  .audit-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #4a5568;
+  }
+  
+  .audit-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.15s;
+  }
+  
+  .audit-table tbody tr:hover {
+    background-color: #f7fafc;
+  }
+  
+  .audit-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  .audit-table td {
+    padding: 1rem 1.5rem;
+    color: #2d3748;
+  }
+  
+  .violation-row {
+    background-color: #fff5f5;
+  }
+  
+  .violation-row:hover {
+    background-color: #fed7d7;
+  }
+  
+  .timestamp-cell {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #718096;
+    white-space: nowrap;
+  }
+  
+  .question-cell {
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Badge styles */
+  .badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+  
+  .badge-violation {
+    background: #fed7d7;
+    color: #742a2a;
+  }
+  
+  .badge-normal {
+    background: #bee3f8;
+    color: #2c5282;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #a0aec0;
+    font-style: italic;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .audit-container {
+      padding: 1rem;
+    }
+  
+    .audit-title {
+      font-size: 1.5rem;
+    }
+  
+    .audit-stats {
+      flex-direction: column;
+    }
+  
+    .stat-card {
+      min-width: 100%;
+    }
+  
+    .table-container {
+      overflow-x: auto;
+    }
+  
+    .audit-table {
+      font-size: 0.875rem;
+    }
+  
+    .audit-table th,
+    .audit-table td {
+      padding: 0.75rem 1rem;
+    }
+  }

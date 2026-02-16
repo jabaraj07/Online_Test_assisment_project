@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap");
+
+/* Assessment portal – warm light theme, emerald accent */
+.home {
+  --home-bg: linear-gradient(160deg, #f0f4f0 0%, #e8efe8 40%, #f5f7f5 100%);
+  --home-card: #ffffff;
+  --home-card-border: rgba(0, 0, 0, 0.06);
+  --home-text: #1a2e1a;
+  --home-text-muted: #5a6b5a;
+  --home-accent: #059669;
+  --home-accent-hover: #047857;
+  --home-input-bg: #f7faf7;
+  --home-input-border: #d1ddd1;
+  --home-input-focus: #059669;
+  --home-error-bg: #fffbeb;
+  --home-error-border: #f59e0b;
+  --home-error-text: #b45309;
+  --home-font: "DM Sans", system-ui, -apple-system, sans-serif;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--home-bg);
+  font-family: var(--home-font);
+}
+
+.home__card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px;
+  background: var(--home-card);
+  border: 1px solid var(--home-card-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(5, 150, 105, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.home__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.home__title {
+  margin: 0 0 8px 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--home-text);
+  letter-spacing: -0.02em;
+}
+
+.home__subtitle {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--home-text-muted);
+  font-weight: 400;
+}
+
+.home__alert {
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  background: var(--home-error-bg);
+  border: 1px solid var(--home-error-border);
+  border-radius: 10px;
+  color: var(--home-error-text);
+  font-size: 0.9rem;
+}
+
+.home__alert p {
+  margin: 0 0 10px 0;
+}
+
+.home__alert .home__btn--secondary {
+  margin-top: 4px;
+}
+
+.home__field {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.home__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--home-text-muted);
+}
+
+.home__input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--home-text);
+  background: var(--home-input-bg);
+  border: 1px solid var(--home-input-border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.home__input::placeholder {
+  color: #7a8b7a;
+}
+
+.home__input:hover:not(:disabled) {
+  border-color: #a8b8a8;
+}
+
+.home__input:focus {
+  border-color: var(--home-input-focus);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
+}
+
+.home__input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.home__btn {
+  padding: 12px 24px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.home__btn:active {
+  transform: scale(0.98);
+}
+
+.home__btn--primary {
+  background: var(--home-accent);
+  color: #ffffff;
+}
+
+.home__btn--primary:hover:not(:disabled) {
+  background: var(--home-accent-hover);
+}
+
+.home__btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.home__btn--secondary {
+  background: transparent;
+  color: var(--home-text-muted);
+  border: 1px solid var(--home-input-border);
+}
+
+.home__btn--secondary:hover {
+  color: var(--home-text);
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.06);
+}
+
+.home__loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--home-bg);
+  font-family: var(--home-font);
+}
+
+.home__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--home-input-border);
+  border-top-color: var(--home-accent);
+  border-radius: 50%;
+  animation: home-spin 0.8s linear infinite;
+}
+
+.home__loading-text {
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  color: var(--home-text-muted);
+}
+
+@keyframes home-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
