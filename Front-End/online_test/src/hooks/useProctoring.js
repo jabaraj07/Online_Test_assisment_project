@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { logEvent } from "../services/api";
 
 const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
@@ -18,6 +18,21 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
     screenResolution: `${window.screen.width}x${window.screen.height}`,
     onlineStatus: navigator.onLine,
   });
+
+    const checkViolationLimit = useCallback(() => {
+  if (violationCount.current >= 10) {
+    logEvent({
+      attemptId,
+      eventType: "VIOLATION_LIMIT_REACHED",
+      questionId: null,
+      metadata: getBrowserMetadata(),
+    });
+
+    if (onViolationLimitReached) {
+      onViolationLimitReached();
+    }
+  }
+}, [attemptId, onViolationLimitReached]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -43,7 +58,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
 
     return () =>
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-  }, [attemptId]);
+  }, [attemptId,checkViolationLimit]);
 
   useEffect(() => {
     const handleVisisbilityChange = () => {
@@ -93,7 +108,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
     return () => {
       document.removeEventListener("visibilitychange", handleVisisbilityChange);
     };
-  }, [attemptId]);
+  }, [attemptId, checkViolationLimit]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -119,7 +134,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [attemptId]);
+  }, [attemptId, checkViolationLimit]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -149,7 +164,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [attemptId]);
+  }, [attemptId, checkViolationLimit]);
 
   useEffect(() => {
     const handleCopy = () => {
@@ -183,7 +198,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
       document.removeEventListener("copy", handleCopy);
       document.removeEventListener("paste", handlePaste);
     };
-  }, [attemptId, questionId]);
+  }, [attemptId, questionId, checkViolationLimit]);
 
   useEffect(() => {
     const handleRightClick = (e) => {
@@ -256,22 +271,26 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
       document.removeEventListener("contextmenu", handleRightClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [attemptId, questionId]);
+  }, [attemptId, questionId, checkViolationLimit]);
 
-  const checkViolationLimit = () => {
-    if (violationCount.current >= 10) {
-      logEvent({
-        attemptId,
-        eventType: "VIOLATION_LIMIT_REACHED",
-        questionId: null,
-        metadata: getBrowserMetadata(),
-      });
+  // const checkViolationLimit = () => {
+  //   if (violationCount.current >= 10) {
+  //     logEvent({
+  //       attemptId,
+  //       eventType: "VIOLATION_LIMIT_REACHED",
+  //       questionId: null,
+  //       metadata: getBrowserMetadata(),
+  //     });
 
-      if (onViolationLimitReached) {
-        onViolationLimitReached();
-      }
-    }
-  };
+  //     if (onViolationLimitReached) {
+  //       onViolationLimitReached();
+  //     }
+  //   }
+  // };
+
+
+
+
 };
 
 export default useProctoring;

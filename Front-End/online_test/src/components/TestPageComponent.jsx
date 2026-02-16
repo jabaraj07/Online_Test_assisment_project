@@ -120,9 +120,35 @@ const TestPageComponent = () => {
     onlineStatus: navigator.onLine,
   });
 
+  //   const fetchUserDetails = useCallback(async () => {
+  //   try {
+  //     const response = await getAttemptById(attemptId)
+  //     setAttemptDetails(response);
+  //   } catch (error) {
+  //     console.error("Error fetching attempt details:", error);
+  //   }
+  // }, [attemptId]);
+
+  // useEffect(() => {
+  //   fetchUserDetails();
+  // }, [attemptId]);
+
+
   useEffect(() => {
+  const fetchUserDetails = async () => {
+    try {
+      const response = await getAttemptById(attemptId);
+      setAttemptDetails(response);
+    } catch (error) {
+      console.error("Error fetching attempt details:", error);
+    }
+  };
+
+  if (attemptId) {
     fetchUserDetails();
-  }, [attemptId]);
+  }
+}, [attemptId]);
+
 
   useEffect(() => {
     const load = async () => {
@@ -182,15 +208,6 @@ const TestPageComponent = () => {
     };
     checkAttemptStatus();
   }, [attemptId, navigate]);
-
-  const fetchUserDetails = useCallback(async () => {
-    try {
-      const response = await getAttemptById(attemptId)
-      setAttemptDetails(response);
-    } catch (error) {
-      console.error("Error fetching attempt details:", error);
-    }
-  }, [attemptId]);
 
   return (
     <div className="test-page">
