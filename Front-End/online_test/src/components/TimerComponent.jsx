@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { logEvent } from "../services/api";
 import "./TimerComponent.css";
 
+const WARNING_THRESHOLDS = [300, 60];
+
 const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
   console.log("AttemptId : "+attemptId);
   console.log("Duration : "+duration);
   console.log(isSubmitted)
   
   const endTime = new Date(duration);
-  const WARNING_THRESHOLDS = [300, 60];
   const [triggeredWarnings, setTriggeredWarnings] = useState([]);
 
   const calculateTimeLeft = () => {
@@ -43,7 +44,7 @@ const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
         setTriggeredWarnings((prev) => [...prev, threshold]);
       }
     });
-  }, [timeLeft, triggeredWarnings]);
+  }, [timeLeft, triggeredWarnings, attemptId]);
 
     const getBrowserMetadata = () => ({
       userAgent: navigator.userAgent,
@@ -96,7 +97,7 @@ const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
     }, 1000);
 
     return () => clearInterval(timerRef.current);
-  }, [duration, isSubmitted]);
+  }, [duration, isSubmitted, onExpire, attemptId]);
 
   useEffect(() => {
     if (isSubmitted) {

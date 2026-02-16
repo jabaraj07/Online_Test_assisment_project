@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./ResultPage.css";
-import axios from "axios";
 import { getAttemptById } from "../services/api";
 
 const ResultPage = () => {

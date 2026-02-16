@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { replace, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./HomeComponent.css";
 
 const STORAGE_KEY = "assessment_user_id";
@@ -61,7 +61,7 @@ const HomeComponent = () => {
     return () => {
       cancelled = true;
     };
-  }, [ nav, location.pathname]);
+  }, [userId, nav, location.pathname]);
   
   const handleStartTest = async () => {
     const id = userId.trim();

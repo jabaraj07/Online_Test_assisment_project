@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -184,14 +183,14 @@ const TestPageComponent = () => {
     checkAttemptStatus();
   }, [attemptId, navigate]);
 
-  const fetchUserDetails = async () => {
+  const fetchUserDetails = useCallback(async () => {
     try {
       const response = await getAttemptById(attemptId)
       setAttemptDetails(response);
     } catch (error) {
       console.error("Error fetching attempt details:", error);
     }
-  };
+  }, [attemptId]);
 
   return (
     <div className="test-page">
