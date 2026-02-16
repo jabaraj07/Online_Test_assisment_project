@@ -3,6 +3,10 @@ import React, { createContext, useContext, useEffect, useRef } from "react";
 
 const EventLoggerContext = createContext();
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api",
+});
+
 export const EventLoggerProvider = ({ attemptId, children }) => {
   const eventQueueRef = useRef([]);
 
@@ -22,8 +26,8 @@ export const EventLoggerProvider = ({ attemptId, children }) => {
       eventQueueRef.current = [];
 
       try {
-        await axios.post(
-          `http://localhost:5000/api/attempt/${attemptId}/event`,
+        await api.post(
+          `/attempt/${attemptId}/event`,
           { events: eventsToSend },
         );
       } catch (err) {

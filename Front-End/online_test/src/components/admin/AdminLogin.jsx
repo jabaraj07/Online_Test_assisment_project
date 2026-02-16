@@ -9,14 +9,23 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const api = axios.create({
+    baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api",
+  });
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/admin/login",
+      // const res = await axios.post(
+      //   "http://localhost:5000/api/admin/login",
+      //   { email, password }
+      // );
+
+      const res = await api.post(
+        "/admin/login",
         { email, password }
       );
 

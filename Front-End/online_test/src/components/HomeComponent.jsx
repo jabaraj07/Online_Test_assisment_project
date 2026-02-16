@@ -5,6 +5,10 @@ import "./HomeComponent.css";
 
 const STORAGE_KEY = "assessment_user_id";
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api",
+});
+
 function isValidId(id) {
   return typeof id === "string" && id.trim().length > 0 && id !== "undefined";
 }
@@ -27,8 +31,8 @@ const HomeComponent = () => {
   
     const checkAttemptStatus = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/attempt/status/${userId}`,
+        const response = await api.get(
+          `/attempt/status/${userId}`,
         );
   
         if (cancelled) return;
@@ -72,8 +76,14 @@ const HomeComponent = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/attempt/start",
+      // const response = await axios.post(
+      //   "http://localhost:5000/api/attempt/start",
+      //   {
+      //     userId: id,
+      //   },
+      // );
+      const response = await api.post(
+        "/attempt/start",
         {
           userId: id,
         },
