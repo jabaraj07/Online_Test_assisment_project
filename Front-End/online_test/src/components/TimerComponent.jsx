@@ -5,9 +5,9 @@ import "./TimerComponent.css";
 const WARNING_THRESHOLDS = [300, 60];
 
 const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
-  console.log("AttemptId : "+attemptId);
-  console.log("Duration : "+duration);
-  console.log(isSubmitted)
+  // console.log("AttemptId : "+attemptId);
+  // console.log("Duration : "+duration);
+  // console.log(isSubmitted)
   
   const endTime = new Date(duration);
   const [triggeredWarnings, setTriggeredWarnings] = useState([]);
