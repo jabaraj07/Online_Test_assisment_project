@@ -7,11 +7,11 @@ import {
 } from "./eventLogPersistence";
 import AXIOS from '../axios/testAxiosConfig'
 
-const API_BASE = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+const API_BASE = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api";
 
 function sendEventBeacon(attemptId, eventType, timestamp, questionId, metadata) {
   if (typeof navigator === "undefined" || !navigator.sendBeacon) return;
-  const url = `${API_BASE}/api/attempt/${attemptId}/event`;
+  const url = `${API_BASE}/attempt/${attemptId}/event`;
   const body = JSON.stringify({
     events: [{ eventType, timestamp, questionId, metadata }],
   });
@@ -44,16 +44,14 @@ export const logEvent = async (
 
   appendEvent(attemptId, event);
 
-  if (useBeacon) {
-    console.log("BEAN LOG");
-    
+  if (useBeacon) {    
     sendEventBeacon(attemptId, eventType, timestamp, questionId, metadata);
     return;
   }
 
   try {
     const response = await axios.post(
-      `${API_BASE}/api/attempt/${attemptId}/event`,
+      `${API_BASE}/attempt/${attemptId}/event`,
       { events: [{ eventType, timestamp, questionId, metadata }] },
     );
     removeEventsById(attemptId, [id]);
@@ -74,7 +72,7 @@ export const flushPendingEvents = async (attemptId) => {
   const { events, ids } = toBackendPayload(pending);
   try {
     await axios.post(
-      `${API_BASE}/api/attempt/${attemptId}/event`,
+      `${API_BASE}/attempt/${attemptId}/event`,
       { events },
     );
     removeEventsById(attemptId, ids);
