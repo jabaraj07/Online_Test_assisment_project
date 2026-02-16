@@ -89,7 +89,7 @@ const HomeComponent = () => {
         },
       );
 
-      console.log("Token : "+response.data.Token)
+      // console.log("Token : "+response.data.Token)
 
       if (response.status === 201) {
         const existingToken = sessionStorage.getItem("token");
@@ -100,7 +100,7 @@ const HomeComponent = () => {
         sessionStorage.setItem("token", response.data.Token);
       }
 
-      console.log("Attempt started:", response.data);
+      // console.log("Attempt started:", response.data);
       // console.log("Token : "+response.data?.Token)
 
       const aid = response.data?.attemptId;
