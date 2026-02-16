@@ -9,11 +9,6 @@ import AXIOS from '../axios/testAxiosConfig'
 
 const API_BASE = "http://localhost:5000";
 
-/**
- * Send event via sendBeacon so it is delivered even when the tab is throttled
- * (e.g. after exiting fullscreen or switching tab). Used for critical events
- * that must not be delayed by the browser.
- */
 function sendEventBeacon(attemptId, eventType, timestamp, questionId, metadata) {
   if (typeof navigator === "undefined" || !navigator.sendBeacon) return;
   const url = `${API_BASE}/api/attempt/${attemptId}/event`;
@@ -32,9 +27,7 @@ export const logEvent = async (
     metadata = {},
   },
   options = {}
-) => {
-  // console.log("QuestionId in logEvent",questionId);
-  
+) => {  
   const { useBeacon = false } = options;
   const timestamp = new Date().toISOString();
   const id =
@@ -73,10 +66,7 @@ export const logEvent = async (
   }
 };
 
-/**
- * Flush events persisted locally (e.g. after offline or page refresh).
- * Call this when the test page loads so pending events are sent to the backend.
- */
+
 export const flushPendingEvents = async (attemptId) => {
   const pending = getPendingEvents(attemptId);
   if (pending.length === 0) return;

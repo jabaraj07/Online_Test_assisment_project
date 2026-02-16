@@ -6,7 +6,6 @@ const EventLoggerContext = createContext();
 export const EventLoggerProvider = ({ attemptId, children }) => {
   const eventQueueRef = useRef([]);
 
-  // Add event to queue
   const logEvent = (type) => {
     eventQueueRef.current.push({
       type,

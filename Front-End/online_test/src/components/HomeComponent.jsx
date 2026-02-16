@@ -19,43 +19,9 @@ const HomeComponent = () => {
   const nav = useNavigate();
   const location = useLocation()
 
-  // useEffect(() => {
-  //   if (!userId.trim()) return;
-
-  //   let cancelled = false;
-  //   const checkAttemptStatus = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:5000/api/attempt/status/${userId}`,
-  //       );
-  //       if (cancelled) return;
-
-  //       const aid = response.data?.attemptId;
-  //       if (!isValidId(aid)) return;
-
-  //       if (response.data.status === "EXPIRED") {
-  //         setIsCompleted(true);
-  //         nav(`/result/${aid}`);
-  //       } else if (response.data.status === "IN_PROGRESS") {
-  //         nav(`/test/${aid}`);
-  //       }
-  //     } catch (error) {
-  //       if (!cancelled) console.log("No existing attempt found");
-  //     } finally {
-  //       if (!cancelled) setLoading(false);
-  //     }
-  //   };
-
-  //   checkAttemptStatus();
-  //   return () => {
-  //     cancelled = true;
-  //   };
-  // }, [nav, userId]);
-
-
   useEffect(() => {
     if (!userId.trim()) return;
-    if (location.pathname !== "/") return;  // 👈 ADD THIS
+    if (location.pathname !== "/") return; 
   
     let cancelled = false;
   
@@ -167,11 +133,6 @@ const HomeComponent = () => {
         });
         return;
       }
-
-      // if (error.response?.status === 401) {
-      //   sessionStorage.removeItem("token");
-      //   // navigate("/");
-      // }
 
       if (status !== 400) {
         console.error(

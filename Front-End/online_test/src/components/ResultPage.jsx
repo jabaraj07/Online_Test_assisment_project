@@ -19,17 +19,11 @@ const ResultPage = () => {
 
     const fetchAttempt = async()=>{
       try {
-        // const attempt = await axios.get(
-        //   `http://localhost:5000/api/attempt/${attemptId}`
-        // );
-
         const attempt = await getAttemptById(attemptId)
-        console.log("Data In Result Page : "+attempt);
-        
+        // console.log("Data In Result Page : "+attempt);
         setData(attempt);
       } catch (error) {
         console.error("Failed to fetch attempt:", error);
-
       }
     }
     if (attemptId) {

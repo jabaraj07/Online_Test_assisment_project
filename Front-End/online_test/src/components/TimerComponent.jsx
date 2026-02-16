@@ -27,8 +27,6 @@ const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
   useEffect(() => {
     WARNING_THRESHOLDS.forEach(async (threshold) => {
       if (timeLeft === threshold && !triggeredWarnings.includes(threshold)) {
-        // alert(`Only ${threshold / 60} minutes left!`);
-
         try {
           await logEvent({
             attemptId,
@@ -55,18 +53,8 @@ const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
       onlineStatus: navigator.onLine,
     });
 
-  // 🟢 Accurate Timer (no drift, production safe)
   useEffect(() => {
     if (!duration || isSubmitted) return;
-
-    // logEvent(attemptId, "TIMER_STARTED");
-
-    // logEvent({
-    //   attemptId,
-    //   eventType: "TIMER_STARTED",
-    //   questionId: null,
-    //   metadata: getBrowserMetadata(),
-    // });
 
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
@@ -110,33 +98,11 @@ const TimerComponent = ({ duration, attemptId, onExpire, isSubmitted }) => {
     return () => clearInterval(timerRef.current);
   }, [duration, isSubmitted]);
 
-  // 🔴 Stop timer if manually submitted
   useEffect(() => {
     if (isSubmitted) {
       clearInterval(timerRef.current);
     }
   }, [isSubmitted]);
-
-  // Handle expiration fallback (redundant with setInterval above; keep for state-driven edge cases)
-  // useEffect(() => {
-  //   if (timeLeft <= 0 && !hasExpiredRef.current) {
-  //     hasExpiredRef.current = true;
-  //     clearInterval(timerRef.current);
-  //     logEvent({
-  //       attemptId,
-  //       eventType: "TIMER_EXPIRED",
-  //       questionId: null,
-  //       metadata: getBrowserMetadata(),
-  //     });
-  //     logEvent({
-  //       attemptId,
-  //       eventType: "AUTO_SUBMIT",
-  //       questionId: null,
-  //       metadata: getBrowserMetadata(),
-  //     });
-  //     onExpire?.();
-  //   }
-  // }, [timeLeft]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);

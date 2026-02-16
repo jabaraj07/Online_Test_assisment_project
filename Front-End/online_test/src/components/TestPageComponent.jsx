@@ -26,9 +26,6 @@ const TestPageComponent = () => {
   const answersRef = useRef(answers);
   answersRef.current = answers;
 
-  // console.log("currentQuestionId",currentQuestionId);
-
-  // const location = useLocation();
   const navigate = useNavigate();
 
   const persistAnswers = useCallback(
@@ -52,7 +49,6 @@ const TestPageComponent = () => {
   );
 
   const performSubmit = async (answersToSave,reason = "NORMAL") => {
-    // console.log("Navigating to result")
     if (isSubmitted) return;
     try {
       setIsSubmitted(true);
@@ -190,9 +186,6 @@ const TestPageComponent = () => {
 
   const fetchUserDetails = async () => {
     try {
-      // const response = await axios.get(
-      //   `http://localhost:5000/api/attempt/${attemptId}`,
-      // );
       const response = await getAttemptById(attemptId)
       setAttemptDetails(response);
     } catch (error) {

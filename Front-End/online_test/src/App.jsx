@@ -15,7 +15,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeComponent />} />
-        <Route path="/test/:attemptId" element={<ProtectedTestRoute><TestPageComponent /></ProtectedTestRoute>} />
+        <Route
+          path="/test/:attemptId"
+          element={
+            <ProtectedTestRoute>
+              <TestPageComponent />
+            </ProtectedTestRoute>
+          }
+        />
         <Route path="/result/:attemptId" element={<ResultPage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route

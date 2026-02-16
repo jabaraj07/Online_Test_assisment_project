@@ -1,9 +1,3 @@
-/**
- * Persists proctoring/audit events locally so they survive offline and page refresh.
- * Events are keyed by attemptId and sent to the backend when online; successful
- * sends remove them from storage to keep logs immutable and avoid duplicates.
- */
-
 const STORAGE_KEY_PREFIX = "proctor_pending_";
 const MAX_EVENTS_PER_ATTEMPT = 500;
 

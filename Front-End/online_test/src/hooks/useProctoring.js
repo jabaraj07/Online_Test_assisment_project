@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { logEvent } from "../services/api";
 
 const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
-  // console.log("questionId in useProctoring", questionId);
   const violationCount = useRef(0);
 
   const questionIdRef = useRef(questionId);
@@ -141,7 +140,7 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
 
             checkViolationLimit();
           }
-        }, 100); // small delay to let browser exit fullscreen
+        }, 100);
       }
     };
 
@@ -201,7 +200,6 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
     };
 
     const handleKeyDown = (e) => {
-      // Block F12
       if (
         e.key === "F12" ||
         (e.ctrlKey && e.shiftKey && e.key === "I") ||
@@ -233,7 +231,6 @@ const useProctoring = ({ attemptId, onViolationLimitReached, questionId }) => {
         checkViolationLimit();
       }
 
-      // Block Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S
       if (e.ctrlKey && ["c", "v", "u", "s"].includes(e.key.toLowerCase())) {
         e.preventDefault();
         violationCount.current++;

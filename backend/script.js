@@ -19,11 +19,8 @@ app.use(express.json());
 
 connectDB();
 
-
 app.use('/api/attempt',testRoute);
 app.use('/api/admin',adminRoute);
-
-
 
 app.get('/',(req,res)=>{
     res.send('Hello World!');
